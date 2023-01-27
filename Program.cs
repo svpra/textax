@@ -13,6 +13,9 @@ builder.Services.AddStackExchangeRedisCache(options => {
     options.Configuration = "localhost";
     options.InstanceName = "local";
 });
+
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
  
 public class User
@@ -85,6 +88,7 @@ public class UserService
         return "User not found";
     });
     app.MapGet("/create", () => return View(Create));
+    app.MapHealthChecks("/healthcheck");
 
     app.Run();
 }
