@@ -1,12 +1,14 @@
 using System;
 using Tectex.Models;
+using MarkDig;
+using Tectex.Markdown;
 
 namespace Tectex.Controllers {
 
     public class PostController: Controller 
     {
         private readonly IPostRepository _postRepository;
-        public MyBlogController(IPostRepository postRepository) {
+        public PostController(IPostRepository postRepository) {
             _postRepository = postRepository;
         }
 
@@ -16,7 +18,7 @@ namespace Tectex.Controllers {
 
             var model = new PostViewModel {
                 Title = post.Title,
-                Content = post.Content,
+                PostContent = Markdown.ParseHtmlString(Post.Content) // можно было бы встроить трансляцию во view, но пока так
                 AuthorNick = post.Author.Nick
             };
 
