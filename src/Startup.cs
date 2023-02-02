@@ -87,7 +87,7 @@ namespace Tectex
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MaoControllers();
+                endpoints.MapControllers();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{user.Nick?}");
