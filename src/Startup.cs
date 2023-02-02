@@ -71,6 +71,10 @@ namespace Tectex
                     };
                 });
 
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationContext>()
+                .AddDefaultTokenProviders();
+                                       
             services.AddControllersWithViews();         
         }
  
