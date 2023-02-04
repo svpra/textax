@@ -10,7 +10,7 @@ namespace Texta
         {
             var emailMessage = new MimeMessage();
  
-            emailMessage.From.Add(new MailboxAddress("Администрация сайта", "admin@metanit.com"));
+            emailMessage.From.Add(new MailboxAddress("Verify", "noreply@texxxta.su"));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -20,8 +20,8 @@ namespace Texta
              
             using (var client = new SmtpClient())
             {
-                await client.ConnectAsync("smtp.metanit.com", 465, true);
-                await client.AuthenticateAsync("admin@metanit.com", "password");
+                await client.ConnectAsync("smtp.texxxta.com", 465, true);
+                await client.AuthenticateAsync("noreply@texxxta.su", "password");
                 await client.SendAsync(emailMessage);
  
                 await client.DisconnectAsync(true);
