@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
+using Tectex.Models;
+using Infrastructure.Persistence
  
 var builder = WebApplication.CreateBuilder(args);
  
@@ -18,12 +20,6 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
  
-public class User
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public int Age { get; set; }
-}
 public class ApplicationContext : DbContext
 {
     public DbSet<User> Users { get; set; } = null!;
