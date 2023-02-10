@@ -1,6 +1,6 @@
 using Domain.Exceptions;
 
-namespace Domain.Entities.Project;
+namespace Domain.Entities.Post;
 
 public class Title
 {
